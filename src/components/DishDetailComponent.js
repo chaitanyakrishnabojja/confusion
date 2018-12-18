@@ -38,9 +38,11 @@ const DishDetail = (props) => {
     if(props.dish != null){
         return(
             <div className="container">
-                <RenderDish dish={props.dish} />
-                <RenderComments comments={props.dish.comments} />
-            </div>     
+                <div className="row">
+                    <RenderDish dish={props.dish} />
+                    <RenderComments comments={props.dish.comments} />
+                </div> 
+            </div>    
         );
     }else{
         return(
