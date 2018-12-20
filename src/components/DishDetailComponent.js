@@ -4,6 +4,7 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Breadcrum
     Form, FormGroup, Input, Label, Col, Row } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
+import { Loading } from './LoadingComponent';
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -29,7 +30,6 @@ class CommentForm extends Component{
 
     handleSubmit(values){
         this.toggleModal();
-        alert(values.author);
         this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
     }
 
@@ -135,8 +135,23 @@ function RenderComments({comments, addComment, dishId}){
 }
 
 const DishDetail = (props) => {
-
-    if(props.dish != null){
+    if(props.isLoading){
+        return(
+            <div className="container">
+                <div className="row">
+                    <Loading />
+                </div>
+            </div>
+        );
+    }else if(props.errMess){
+        return(
+            <div className="container">
+                <div className="row">
+                    <h4>{props.errMess}</h4>
+                </div>
+            </div>
+        );
+    }else if(props.dish != null){
         return(
             <div className="container">
                 <div className="row">
