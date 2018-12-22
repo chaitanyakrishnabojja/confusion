@@ -35,7 +35,7 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
             },
             error => {
                 var errmess = new Error(error.message);
-                throw error;
+                throw errmess;
             })
             .then(response => response.json())
             .then(response => dispatch(addComment(response)))
@@ -61,7 +61,7 @@ export const fetchDishes = () => (dispatch) => {
                 },
                 error => {
                     var errmess = new Error(error.message);
-                    throw error;
+                    throw errmess;
                 })
                 .then(response => response.json())
                 .then(dishes => dispatch(addDishes(dishes)))
@@ -96,7 +96,7 @@ export const fetchComments = () => (dispatch) => {
                 },
                 error => {
                     var errmess = new Error(error.message);
-                    throw error;
+                    throw errmess;
                 })
                 .then(response => response.json())
                 .then(comments => dispatch(addComments(comments)))
@@ -129,7 +129,7 @@ export const fetchPromos = () => (dispatch) => {
                 },
                 error => {
                     var errmess = new Error(error.message);
-                    throw error;
+                    throw errmess;
                 })
                 .then(response => response.json())
                 .then(promos => dispatch(addPromos(promos)))
@@ -169,7 +169,7 @@ export const fetchLeaders = () => (dispatch) => {
                 },
                 error => {
                     var errmess = new Error(error.message);
-                    throw error;
+                    throw errmess;
                 })
                 .then(response => response.json())
                 .then(leaders => dispatch(addLeaders(leaders)))
@@ -225,7 +225,7 @@ export const postFeedback = (firstname, lastname, telnum, email, agree, contactT
             },
             error => {
                 var errmess = new Error(error.message);
-                throw error;
+                throw errmess;
             })
             .then(response => response.json())
             .then(response => {
